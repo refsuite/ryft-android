@@ -96,7 +96,9 @@ internal class DefaultRyftPaymentDelegate(
         usage: RyftDropInUsage,
         googlePayAvailable: Boolean
     ) {
-        val showGooglePay = if (usage == RyftDropInUsage.Payment) googlePayAvailable else false
+        // FORK: previously forced false unless usage == Payment, hiding the Google Pay header in
+        // SetupCard mode. Now driven purely by Google Pay availability for both usages.
+        val showGooglePay = googlePayAvailable
         cardOnlyHeader.visibility = if (showGooglePay) View.GONE else View.VISIBLE
         googlePayHeader.visibility = if (showGooglePay) View.VISIBLE else View.GONE
     }

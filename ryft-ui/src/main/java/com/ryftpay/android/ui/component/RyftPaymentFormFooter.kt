@@ -89,8 +89,11 @@ internal class RyftPaymentFormFooter @JvmOverloads constructor(
 
     private fun determinePayButtonTitle(): String = when {
         state == State.Processing -> context.getString(R.string.ryft_processing)
+        // FORK: honor payButtonTitle override in all usages (incl. SetupCard). Upstream returned
+        // the hardcoded "Save card" string before ever reaching the override.
+        !payButtonTitleOverride.isNullOrBlank() -> payButtonTitleOverride!!
         usage == RyftDropInUsage.SetupCard -> context.getString(R.string.ryft_save_card)
-        else -> payButtonTitleOverride?.ifBlank { null } ?: context.getString(R.string.ryft_pay)
+        else -> context.getString(R.string.ryft_pay)
     }
 
     internal enum class State {

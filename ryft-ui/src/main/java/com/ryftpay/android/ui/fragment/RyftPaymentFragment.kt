@@ -121,8 +121,9 @@ internal class RyftPaymentFragment :
         setupRyftPaymentService()
         setupPaymentResultViewModel()
         setupThreeDSecureResultObserver()
-        val googlePayEnabled = googlePayConfiguration != null &&
-            displayConfiguration.usage == RyftDropInUsage.Payment
+        // FORK: previously also required usage == Payment, which hid Google Pay in SetupCard mode.
+        // Now Google Pay initialises whenever it is configured, regardless of usage.
+        val googlePayEnabled = googlePayConfiguration != null
         if (!googlePayEnabled) {
             initialiseDelegate(root, googlePayAvailable = false)
             return
@@ -383,7 +384,14 @@ internal class RyftPaymentFragment :
                 clientSecret = clientSecret,
                 paymentMethod = PaymentMethod.googlePay(
                     paymentData.token,
-                    paymentData.billingAddress
+                    paymentData.billingAddress,
+                    // FORK: in SetupCard mode, store the Google Pay card for future use
+                    // (mirrors the card path). In Payment mode this stays null (pay-now only).
+                    options = if (displayConfiguration.usage == RyftDropInUsage.SetupCard) {
+                        PaymentMethodOptions.card(store = true)
+                    } else {
+                        null
+                    }
                 ),
                 customerDetails = CustomerDetails.from(paymentData.email),
                 subAccountId = subAccountId,

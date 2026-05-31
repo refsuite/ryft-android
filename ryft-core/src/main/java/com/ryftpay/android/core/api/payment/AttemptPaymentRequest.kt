@@ -60,7 +60,9 @@ data class AttemptPaymentRequest(
                     BillingAddressRequest.from(paymentMethod.billingAddress),
                     CustomerDetailsRequest.from(customerDetails),
                     ThreeDsRequestDetails.Application,
-                    paymentMethodOptions = null
+                    // FORK: forward payment-method options for Google Pay too (upstream hardcoded null),
+                    // so store=true reaches the API and the card is vaulted.
+                    PaymentMethodOptionsRequest.from(paymentMethod.options)
                 )
             }
     }
