@@ -16,12 +16,13 @@ buildscript {
 
 plugins {
     id("org.jlleitschuh.gradle.ktlint") version "11.6.1" apply false
-    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
+    // FORK: dropped io.github.gradle-nexus.publish-plugin — we publish to GitHub Packages, not Sonatype.
 }
 
 ext {
-    version = '2.0.1'
-    group = "com.ryftpay"
+    // FORK: distinct group/version so this never collides with upstream com.ryftpay:*:2.0.1.
+    version = '2.0.1-refsuite.1'
+    group = "com.refsuite.ryft"
     java_version = JavaVersion.VERSION_17
     kotlin_jvm_target = '17'
     min_sdk_version = 24
@@ -54,4 +55,5 @@ tasks.register('clean', Delete) {
     delete rootProject.buildDir
 }
 
-apply from: "publish-root.gradle"
+// FORK: removed `apply from: "publish-root.gradle"` (Sonatype/nexus + GPG). GitHub Packages
+// repository + credentials are configured per-module in publish-module.gradle.

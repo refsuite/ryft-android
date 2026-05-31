@@ -1,8 +1,20 @@
 apply plugin: "maven-publish"
-apply plugin: 'signing'
+// FORK: dropped `apply plugin: 'signing'` — GitHub Packages does not require GPG-signed artifacts.
 
 afterEvaluate { project ->
     publishing {
+        // FORK: publish to the refsuite GitHub Packages Maven registry instead of Sonatype.
+        // Credentials come from gradle.properties (gpr.user/gpr.key) or env (GITHUB_ACTOR/GITHUB_TOKEN).
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/refsuite/ryft-android")
+                credentials {
+                    username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                    password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+                }
+            }
+        }
         publications {
             release(MavenPublication) {
                 groupId rootProject.ext.group
@@ -46,14 +58,7 @@ afterEvaluate { project ->
     }
 }
 
-signing {
-    useInMemoryPgpKeys(
-        rootProject.ext["signingKeyId"],
-        rootProject.ext["signingKey"],
-        rootProject.ext["signingPassword"],
-    )
-    sign publishing.publications
-}
+// FORK: removed the `signing { … }` block (no GPG signing for GitHub Packages).
 
 task cleanBuildPublishLocal(type: GradleBuild) {
     tasks = ['clean', 'build', 'publishToMavenLocal']
