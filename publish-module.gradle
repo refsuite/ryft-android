@@ -1,5 +1,4 @@
 apply plugin: "maven-publish"
-apply plugin: 'signing'
 
 afterEvaluate { project ->
     publishing {
@@ -18,43 +17,45 @@ afterEvaluate { project ->
                 pom {
                     name = project.artifactName
                     description = project.artifactDescrption
-                    url = "https://github.com/RyftPay/ryft-android"
+                    url = "https://github.com/refsuite/ryft-android"
 
                     licenses {
                         license {
                             name = "The MIT License"
-                            url = "https://raw.githubusercontent.com/RyftPay/ryft-android/master/LICENSE"
+                            url = "https://raw.githubusercontent.com/refsuite/ryft-android/main/LICENSE"
                             distribution = "repo"
                         }
                     }
 
                     developers {
                         developer {
-                            id = "ryftpay"
-                            name = "Ryft"
+                            id = "refsuite"
+                            name = "Refsuite"
                         }
                     }
 
                     scm {
-                        connection = 'scm:git:github.com/RyftPay/ryft-android.git'
-                        developerConnection = 'scm:git:ssh://github.com/RyftPay/ryft-android.git'
-                        url = 'https://github.com/RyftPay/ryft-android/tree/master'
+                        connection = 'scm:git:github.com/refsuite/ryft-android.git'
+                        developerConnection = 'scm:git:ssh://github.com/refsuite/ryft-android.git'
+                        url = 'https://github.com/refsuite/ryft-android/tree/main'
                     }
                 }
+            }
+        }
+        repositories {
+            // Publishes into a local checkout of the `maven` branch (no
+            // credentials). Commit + push that branch to make the new version
+            // available over raw.githubusercontent.com. See DEVELOPMENT.md.
+            maven {
+                name = "RawMaven"
+                url = rootProject.file(rootProject.ext.rawMavenDir).toURI()
             }
         }
     }
 }
 
-signing {
-    useInMemoryPgpKeys(
-        rootProject.ext["signingKeyId"],
-        rootProject.ext["signingKey"],
-        rootProject.ext["signingPassword"],
-    )
-    sign publishing.publications
-}
-
+// Publish all modules to the local Maven cache (~/.m2) for ad-hoc testing:
+//   ./gradlew cleanBuildPublishLocal
 task cleanBuildPublishLocal(type: GradleBuild) {
     tasks = ['clean', 'build', 'publishToMavenLocal']
 }

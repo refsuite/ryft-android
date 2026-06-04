@@ -3,10 +3,16 @@ name: publish
 on:
   release:
     types: [released]
+  workflow_dispatch: {}
 
+# Publishes the static Maven repo to the `maven` branch (served anonymously over
+# raw.githubusercontent.com). Uses the built-in GITHUB_TOKEN — no stored secrets.
 jobs:
   publish:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
 
     steps:
     - uses: actions/checkout@v4
@@ -17,18 +23,19 @@ jobs:
         distribution: temurin
         java-version: 17
 
-    - name: Assemble release
-      run: ./gradlew assembleRelease
+    - name: Check out the maven branch into a worktree
+      run: |
+        git fetch origin maven
+        git worktree add ../ryft-android-maven origin/maven
 
-    - name: Generate source and javadoc jars
-      run: ./gradlew sourcesJar javadocJar
+    - name: Publish into the worktree
+      run: ./gradlew publishReleasePublicationToRawMavenRepository --max-workers 1 -PrawMavenDir="$GITHUB_WORKSPACE/../ryft-android-maven"
 
-    - name: Publish to Maven Central
-      run: ./gradlew publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseSonatypeStagingRepository
-      env:
-        OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-        OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-        SIGNING_KEY_ID: ${{ secrets.SIGNING_KEY_ID }}
-        SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
-        SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
-        SONATYPE_STAGING_PROFILE_ID: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
+    - name: Commit and push the maven branch
+      working-directory: ../ryft-android-maven
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add -A
+        git commit -m "publish ${{ github.event.release.tag_name || github.sha }}" || { echo "nothing to publish"; exit 0; }
+        git push origin HEAD:maven

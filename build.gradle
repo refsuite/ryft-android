@@ -16,12 +16,17 @@ buildscript {
 
 plugins {
     id("org.jlleitschuh.gradle.ktlint") version "11.6.1" apply false
-    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
 }
 
 ext {
-    version = '2.0.2'
-    group = "com.ryftpay"
+    // Refsuite fork build. Distinct from upstream's published 2.0.2 so the
+    // GitHub Packages artifact is never confused with Maven Central's. Bump the
+    // `-refsuite.N` suffix for each fork release.
+    version = '2.0.2-refsuite.1'
+    // Refsuite-owned Maven group (artifacts: com.refsuite.ryft:ryft-android,
+    // :ryft-core, :ryft-ui). Note this is only the Maven coordinate group — the
+    // SDK's Kotlin packages / Android namespace remain com.ryftpay.android.*.
+    group = "com.refsuite.ryft"
     java_version = JavaVersion.VERSION_17
     kotlin_jvm_target = '17'
     min_sdk_version = 24
