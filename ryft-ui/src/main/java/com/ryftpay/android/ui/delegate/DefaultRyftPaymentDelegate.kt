@@ -39,7 +39,7 @@ internal class DefaultRyftPaymentDelegate(
         body.initialise(usage, collectNameOnCard, listener = this)
         footer = root.findViewById(R.id.partial_ryft_payment_form_footer)
         footer.initialise(usage, payButtonTitleOverride, listener = this)
-        setHeaderVisibility(usage, googlePayAvailable)
+        setHeaderVisibility(googlePayAvailable)
     }
 
     override fun onGooglePayPaymentProcessing() {
@@ -93,12 +93,10 @@ internal class DefaultRyftPaymentDelegate(
     }
 
     private fun setHeaderVisibility(
-        usage: RyftDropInUsage,
         googlePayAvailable: Boolean
     ) {
-        val showGooglePay = if (usage == RyftDropInUsage.Payment) googlePayAvailable else false
-        cardOnlyHeader.visibility = if (showGooglePay) View.GONE else View.VISIBLE
-        googlePayHeader.visibility = if (showGooglePay) View.VISIBLE else View.GONE
+        cardOnlyHeader.visibility = if (googlePayAvailable) View.GONE else View.VISIBLE
+        googlePayHeader.visibility = if (googlePayAvailable) View.VISIBLE else View.GONE
     }
 
     private fun toggleFormSubmission(

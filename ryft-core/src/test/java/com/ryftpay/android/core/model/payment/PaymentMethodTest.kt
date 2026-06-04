@@ -149,10 +149,19 @@ internal class PaymentMethodTest {
     }
 
     @Test
-    fun `googlePay should return a payment method with no payment method options`() {
+    fun `googlePay should return a payment method with no payment method options when none provided`() {
         PaymentMethod.googlePay(
             GOOGLE_PAY_TOKEN,
             billingAddress = null
         ).options shouldBeEqualTo null
+    }
+
+    @Test
+    fun `googlePay should return a payment method with payment method options when some provided`() {
+        PaymentMethod.googlePay(
+            GOOGLE_PAY_TOKEN,
+            billingAddress = null,
+            options = paymentMethodOptions
+        ).options shouldBeEqualTo paymentMethodOptions
     }
 }
