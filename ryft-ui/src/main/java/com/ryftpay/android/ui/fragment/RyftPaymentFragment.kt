@@ -383,7 +383,9 @@ internal class RyftPaymentFragment :
                 paymentMethod = PaymentMethod.googlePay(
                     paymentData.token,
                     paymentData.billingAddress,
-                    options = if (displayConfiguration.usage == RyftDropInUsage.SetupCard) {
+                    options = if (displayConfiguration.usage == RyftDropInUsage.SetupCard ||
+                        googlePayConfiguration?.store == true
+                    ) {
                         PaymentMethodOptions.googlePay(store = true)
                     } else {
                         null

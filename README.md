@@ -155,6 +155,8 @@ Google Pay will be available for users providing the following is true:
 
 Note: if you don't provide a RyftDropInGooglePayConfiguration object then Google Pay is disabled
 
+To save the Google Pay payment method for future use during a payment, set `store = true` on the `RyftDropInGooglePayConfiguration`. When using the drop-in for `SetupCard` the payment method is always stored regardless of this value.
+
 #### Optional: Collecting name on card
 
 The drop-in can be configured to collect the name on the card the customer pays with
