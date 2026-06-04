@@ -1,0 +1,179 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.refsuite.ryft",
+    "module": "ryft-ui",
+    "version": "2.0.2-refsuite.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.13"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.1.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "ryft-ui-2.0.2-refsuite.1.aar",
+          "url": "ryft-ui-2.0.2-refsuite.1.aar",
+          "size": 533568,
+          "sha512": "3755ef365f45f8477c2caf2c495926ced91d0b2d50af4ae44bb0e6d6a8df74858394d38997e2a36cc6a85e0677f3475111d0913412aeb0669d6cbb2bc546c16f",
+          "sha256": "6568548ec3b6090234ce3f46477e919de0d8d72069f2a6e9dffd965becb88e1a",
+          "sha1": "3dd3ec8a39985d4daa89d73edbed0c8007c4d6ce",
+          "md5": "858752722c29320480701ff2509736f0"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-parcelize-runtime",
+          "version": {
+            "requires": "2.1.21"
+          }
+        },
+        {
+          "group": "com.refsuite.ryft",
+          "module": "ryft-core",
+          "version": {
+            "requires": "2.0.2-refsuite.1"
+          }
+        },
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.7.1"
+          }
+        },
+        {
+          "group": "androidx.legacy",
+          "module": "legacy-support-v4",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "androidx.navigation",
+          "module": "navigation-fragment-ktx",
+          "version": {
+            "requires": "2.9.7"
+          }
+        },
+        {
+          "group": "com.ravelin.threeds2service",
+          "module": "threeds2service-sdk",
+          "version": {
+            "requires": "2.0.2"
+          }
+        },
+        {
+          "group": "com.google.android.gms",
+          "module": "play-services-wallet",
+          "version": {
+            "requires": "19.5.0"
+          }
+        },
+        {
+          "group": "com.google.android.material",
+          "module": "material",
+          "version": {
+            "requires": "1.13.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-core",
+          "version": {
+            "requires": "2.9.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.1.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "ryft-ui-2.0.2-refsuite.1.aar",
+          "url": "ryft-ui-2.0.2-refsuite.1.aar",
+          "size": 533568,
+          "sha512": "3755ef365f45f8477c2caf2c495926ced91d0b2d50af4ae44bb0e6d6a8df74858394d38997e2a36cc6a85e0677f3475111d0913412aeb0669d6cbb2bc546c16f",
+          "sha256": "6568548ec3b6090234ce3f46477e919de0d8d72069f2a6e9dffd965becb88e1a",
+          "sha1": "3dd3ec8a39985d4daa89d73edbed0c8007c4d6ce",
+          "md5": "858752722c29320480701ff2509736f0"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseSourcePublication",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "ryft-ui-2.0.2-refsuite.1-sources.jar",
+          "url": "ryft-ui-2.0.2-refsuite.1-sources.jar",
+          "size": 63051,
+          "sha512": "8062ff8f0e897396ecd7ae9f2bb784099bd3801767204d0d2516099d7cce54591cca01621c032ac2d7ab2a15bcdcd5c8a7f37c797b4fb529bab5f1b06d0ba4df",
+          "sha256": "fc29c9b816be65c82682d1bb572cb20165c4edfe2e6a1263bc0e8daac9a16a57",
+          "sha1": "c4b8c91d305acf1a8fa914ee02fd455191f47122",
+          "md5": "990d866e73d8c013b996b71256054b74"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseJavaDocPublication",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "ryft-ui-2.0.2-refsuite.1-javadoc.jar",
+          "url": "ryft-ui-2.0.2-refsuite.1-javadoc.jar",
+          "size": 365413,
+          "sha512": "8be929a04872563fb696b8a296834aef69fa4a9b044181c3c3dc1959c9901e1ebf1ed0aa071273f8a0e6c4f466f45e64d5b4ab6b28ccbbf8cad45a2252032618",
+          "sha256": "fbf4f27a4cf399bd84159a6db1d420c200151729b3d1a7424c90d3fd5644512b",
+          "sha1": "2217605d9e5bfd65c0accd32510ed7988526cdab",
+          "md5": "0664a29b36de041177dc01623947f056"
+        }
+      ]
+    }
+  ]
+}
