@@ -22,4 +22,21 @@ internal class RyftDropInGooglePayConfigurationTest {
             merchantCountryCode = GB_COUNTRY_CODE
         ).billingAddressRequired shouldBeEqualTo true
     }
+
+    @Test
+    internal fun `store should default to false when not provided`() {
+        RyftDropInGooglePayConfiguration(
+            merchantName = MERCHANT_NAME,
+            merchantCountryCode = GB_COUNTRY_CODE
+        ).store shouldBeEqualTo false
+    }
+
+    @Test
+    internal fun `store should be the provided value when set`() {
+        RyftDropInGooglePayConfiguration(
+            merchantName = MERCHANT_NAME,
+            merchantCountryCode = GB_COUNTRY_CODE,
+            store = true
+        ).store shouldBeEqualTo true
+    }
 }
