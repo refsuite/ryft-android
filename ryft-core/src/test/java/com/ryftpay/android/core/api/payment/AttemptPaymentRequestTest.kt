@@ -314,11 +314,24 @@ internal class AttemptPaymentRequestTest {
     }
 
     @Test
-    fun `from should not add payment method options when payment method is google pay `() {
+    fun `from should not add payment method options when google pay payment method has none`() {
         AttemptPaymentRequest.from(
             CLIENT_SECRET,
             PaymentMethod.googlePay(GOOGLE_PAY_TOKEN, billingAddress = address),
             customerDetails = null
         ).paymentMethodOptions shouldBeEqualTo null
+    }
+
+    @Test
+    fun `from should add payment method options when google pay payment method has some`() {
+        AttemptPaymentRequest.from(
+            CLIENT_SECRET,
+            PaymentMethod.googlePay(
+                GOOGLE_PAY_TOKEN,
+                billingAddress = address,
+                options = paymentMethodOptions
+            ),
+            customerDetails = null
+        ).paymentMethodOptions shouldBeEqualTo PaymentMethodOptionsRequest.from(paymentMethodOptions)
     }
 }

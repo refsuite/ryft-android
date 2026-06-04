@@ -14,4 +14,14 @@ internal class PaymentMethodOptionsTest {
     fun `card should return options with store set to true when it is`() {
         PaymentMethodOptions.card(store = true).store shouldBeEqualTo true
     }
+
+    @Test
+    fun `googlePay should return options with store set to false when it is`() {
+        PaymentMethodOptions.googlePay(store = false).store shouldBeEqualTo false
+    }
+
+    @Test
+    fun `googlePay should return options with store set to true when it is`() {
+        PaymentMethodOptions.googlePay(store = true).store shouldBeEqualTo true
+    }
 }

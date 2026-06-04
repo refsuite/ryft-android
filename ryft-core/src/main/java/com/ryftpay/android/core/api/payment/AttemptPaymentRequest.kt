@@ -60,7 +60,7 @@ data class AttemptPaymentRequest(
                     BillingAddressRequest.from(paymentMethod.billingAddress),
                     CustomerDetailsRequest.from(customerDetails),
                     ThreeDsRequestDetails.Application,
-                    paymentMethodOptions = null
+                    PaymentMethodOptionsRequest.from(paymentMethod.options)
                 )
             }
     }

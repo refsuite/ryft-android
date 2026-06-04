@@ -5,5 +5,7 @@ data class PaymentMethodOptions(
 ) {
     companion object {
         fun card(store: Boolean): PaymentMethodOptions = PaymentMethodOptions(store)
+
+        fun googlePay(store: Boolean): PaymentMethodOptions = PaymentMethodOptions(store)
     }
 }

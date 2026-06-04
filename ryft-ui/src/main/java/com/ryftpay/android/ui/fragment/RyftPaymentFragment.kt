@@ -121,8 +121,7 @@ internal class RyftPaymentFragment :
         setupRyftPaymentService()
         setupPaymentResultViewModel()
         setupThreeDSecureResultObserver()
-        val googlePayEnabled = googlePayConfiguration != null &&
-            displayConfiguration.usage == RyftDropInUsage.Payment
+        val googlePayEnabled = googlePayConfiguration != null
         if (!googlePayEnabled) {
             initialiseDelegate(root, googlePayAvailable = false)
             return
@@ -383,7 +382,12 @@ internal class RyftPaymentFragment :
                 clientSecret = clientSecret,
                 paymentMethod = PaymentMethod.googlePay(
                     paymentData.token,
-                    paymentData.billingAddress
+                    paymentData.billingAddress,
+                    options = if (displayConfiguration.usage == RyftDropInUsage.SetupCard) {
+                        PaymentMethodOptions.googlePay(store = true)
+                    } else {
+                        null
+                    }
                 ),
                 customerDetails = CustomerDetails.from(paymentData.email),
                 subAccountId = subAccountId,

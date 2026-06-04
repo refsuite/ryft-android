@@ -27,13 +27,17 @@ data class PaymentMethod(
             options = null
         )
 
-        fun googlePay(googlePayToken: String, billingAddress: Address?) = PaymentMethod(
+        fun googlePay(
+            googlePayToken: String,
+            billingAddress: Address?,
+            options: PaymentMethodOptions? = null
+        ) = PaymentMethod(
             type = PaymentMethodType.GooglePay,
             cardDetails = null,
             id = null,
             googlePayToken,
             billingAddress,
-            options = null
+            options
         )
     }
 }

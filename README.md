@@ -278,7 +278,8 @@ RyftDropInConfiguration.standardAccountPayment(
     display = RyftDropInDisplayConfiguration(
         usage = RyftDropInUsage.SetupCard
     )
-    // Google Pay will not be shown so there is no need to provide the config
+    // Google Pay is also shown for SetupCard - provide a RyftDropInGooglePayConfiguration
+    // if you'd like your customers to be able to save their Google Pay card for future use
 )
 ```
 
