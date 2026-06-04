@@ -1,5 +1,37 @@
 # Development Setup
 
+## Publishing (raw-served Maven repo)
+
+This fork publishes `com.refsuite.ryft:ryft-android` (+ `ryft-core`, `ryft-ui`)
+as a **static Maven repository on the orphan `maven` branch**, served anonymously
+over `raw.githubusercontent.com`. Consuming apps need **no credentials** — they
+just add the repo URL:
+
+```
+https://raw.githubusercontent.com/refsuite/ryft-android/maven/
+```
+
+The version is set by `ext.version` in `build.gradle` (currently
+`2.0.2-refsuite.1`) — bump the `-refsuite.N` suffix for each release.
+
+### CI (preferred)
+`.github/workflows/publish.yml` runs on a published GitHub Release (or
+**workflow_dispatch**): it builds, publishes into a checkout of the `maven`
+branch, and pushes that branch using the built-in `GITHUB_TOKEN` — no secrets.
+
+### Local publish
+```bash
+# once: a worktree of the maven branch next to this repo
+git worktree add ../ryft-android-maven maven
+
+# each release (after bumping ext.version):
+./gradlew publishReleasePublicationToRawMavenRepository      # writes into the worktree
+cd ../ryft-android-maven && git add -A \
+  && git commit -m "publish com.refsuite.ryft <version>" && git push origin maven
+```
+To test resolution without GitHub, point a consumer at the worktree:
+`maven { url = uri("file:///abs/path/to/ryft-android-maven/") }`.
+
 ## Java Version Requirements
 
 This project requires **Java 17** to build successfully. The GitHub Actions CI also uses Java 17.
