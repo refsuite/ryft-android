@@ -22,7 +22,7 @@ ext {
     // Refsuite fork build. Distinct from upstream's published 2.0.2 so the
     // GitHub Packages artifact is never confused with Maven Central's. Bump the
     // `-refsuite.N` suffix for each fork release.
-    version = '2.0.2-refsuite.1'
+    version = '2.0.2-refsuite.2'
     // Refsuite-owned Maven group (artifacts: com.refsuite.ryft:ryft-android,
     // :ryft-core, :ryft-ui). Note this is only the Maven coordinate group — the
     // SDK's Kotlin packages / Android namespace remain com.ryftpay.android.*.
