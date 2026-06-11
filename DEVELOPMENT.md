@@ -12,7 +12,7 @@ https://raw.githubusercontent.com/refsuite/ryft-android/maven/
 ```
 
 The version is set by `ext.version` in `build.gradle` (currently
-`2.0.2-refsuite.1`) — bump the `-refsuite.N` suffix for each release.
+`2.0.2-refsuite.2`) — bump the `-refsuite.N` suffix for each release.
 
 ### CI (preferred)
 `.github/workflows/publish.yml` runs on a published GitHub Release (or
