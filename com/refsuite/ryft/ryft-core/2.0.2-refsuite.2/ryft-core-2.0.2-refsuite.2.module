@@ -1,0 +1,127 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.refsuite.ryft",
+    "module": "ryft-core",
+    "version": "2.0.2-refsuite.2",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.13"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "ryft-core-2.0.2-refsuite.2.jar",
+          "url": "ryft-core-2.0.2-refsuite.2.jar",
+          "size": 126695,
+          "sha512": "8e6bcd444edca61d1d9c451738bfd466d826d2ed8def4621a77eff64472ea5f8eac70f58d08fde93497d34cc6d4a0e525484117401c5b6edc1012b3919803e66",
+          "sha256": "8fac5bddb12bb41450ff28f977cfca746b8c65272160f15c31b3fd3836d9323b",
+          "sha1": "e3dd60f57e78f29c3457b27cdaf310ee88459d05",
+          "md5": "8feb4e45202e48ea9e7d8f3f326d4a16"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.1.21"
+          }
+        },
+        {
+          "group": "com.squareup.retrofit2",
+          "module": "retrofit",
+          "version": {
+            "requires": "2.9.0"
+          }
+        },
+        {
+          "group": "com.squareup.retrofit2",
+          "module": "converter-jackson",
+          "version": {
+            "requires": "2.9.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "ryft-core-2.0.2-refsuite.2.jar",
+          "url": "ryft-core-2.0.2-refsuite.2.jar",
+          "size": 126695,
+          "sha512": "8e6bcd444edca61d1d9c451738bfd466d826d2ed8def4621a77eff64472ea5f8eac70f58d08fde93497d34cc6d4a0e525484117401c5b6edc1012b3919803e66",
+          "sha256": "8fac5bddb12bb41450ff28f977cfca746b8c65272160f15c31b3fd3836d9323b",
+          "sha1": "e3dd60f57e78f29c3457b27cdaf310ee88459d05",
+          "md5": "8feb4e45202e48ea9e7d8f3f326d4a16"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "ryft-core-2.0.2-refsuite.2-javadoc.jar",
+          "url": "ryft-core-2.0.2-refsuite.2-javadoc.jar",
+          "size": 261,
+          "sha512": "6205b860c2a1c8c80b7318ada1117d246bd7be65d1b4a42c4eab5ba5ef9e5cbd852c5532cf58e667e664a0cbaaba634e2c4901cbfaa114b3b974e85015ac98c2",
+          "sha256": "587e05c3b5247dbf23499d41a4a90dae6dade4cb99e7679384d08dd38589952d",
+          "sha1": "813eacacc939d336c8772f9a5b97019bf02c9d0f",
+          "md5": "9149b3e50f5f0fc4f2e40a6b91dfa26f"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "ryft-core-2.0.2-refsuite.2-sources.jar",
+          "url": "ryft-core-2.0.2-refsuite.2-sources.jar",
+          "size": 24645,
+          "sha512": "4db09c440580531a7349c400f146da8c62e4be765306a7b577030af8953b9f3466caf3e804ce2fd83224dbec9dd81f57184513e3b4c08cfac9198b11eab3f521",
+          "sha256": "dbf021921c8fe4aaa78509199b858ae243d6acb96e079888921051192d63c446",
+          "sha1": "ea1ff74667fe281e936e356d6e010376150acfa0",
+          "md5": "f3c26c996cf1cecd5521d17e60b1b778"
+        }
+      ]
+    }
+  ]
+}
